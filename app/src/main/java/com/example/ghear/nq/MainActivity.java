@@ -3,6 +3,7 @@ package com.example.ghear.nq;
 import android.hardware.Camera;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,4 +25,21 @@ public class MainActivity extends AppCompatActivity {
         frameLayout.addView(showCamera);
 
     }
+
+    Camera.PictureCallback mPictureCallback = new Camera.PictureCallback() {
+        @Override
+        public void onPictureTaken(byte[] data, Camera camera)
+        {
+
+        }
+    };
+
+    public void captureImage (View w)
+    {
+        if(camera!=null)
+        {
+            camera.takePicture(null,null,mPictureCallback);
+        }
+    }
+
 }
